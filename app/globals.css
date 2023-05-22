@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  /* sign in and sign up form classes */
+  .formError {
+    @apply text-[crimson];
+  }
+
+  .formSubmitButton {
+    @apply mt-5 bg-gray-900 w-full text-white  py-2 rounded-full hover:bg-gray-800 transition ease-in-out duration-200;
+  }
+}
