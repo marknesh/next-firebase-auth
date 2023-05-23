@@ -4,8 +4,12 @@
 
 @layer components {
   /* sign in and sign up form classes */
+  .emailInput {
+    @apply bg-transparent w-full  px-3  h-10 border rounded-full border-gray-300 focus:ring-0 focus:outline-none;
+  }
+
   .formError {
-    @apply text-[crimson];
+    @apply text-[crimson] text-sm pl-3;
   }
 
   .formSubmitButton {

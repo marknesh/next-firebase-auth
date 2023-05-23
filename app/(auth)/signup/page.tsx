@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { sendEmailLink } from '@/app/utils/firebase-utils';
 import { AuthError } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
+import Button from '@/components/Button';
+import { useState } from 'react';
 
 const Signup = () => {
   const {
@@ -13,16 +15,21 @@ const Signup = () => {
     formState: { errors },
   } = useForm<SignupForm>();
 
+  const [loading, setLoading] = useState<boolean>(false);
+
   const router = useRouter();
 
   const onSubmit = (data: SignupForm) => {
+    setLoading(true);
     return sendEmailLink(data.email)
       .then(() => {
         window.localStorage.setItem('emailForSignIn', data.email);
-        router.push('/checkYourEmail');
+        setLoading(false);
+        router.push(`/checkEmail?email=${data.email}`);
       })
       .catch((error: AuthError) => {
         console.log(error);
+        setLoading(false);
       });
   };
 
@@ -34,13 +41,15 @@ const Signup = () => {
         <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
           <input
             type='email'
-            className='bg-transparent w-full  px-3  h-10 border rounded-full border-gray-300 focus:ring-0 focus:outline-none'
+            className='emailInput'
             {...register('email', { required: true })}
             placeholder='Email address'
           />
           {errors.email && <span className='formError'>Email is required</span>}
 
-          <button className='formSubmitButton'>Send Email Link</button>
+          <Button loading={loading} className='formSubmitButton'>
+            Send Email Link
+          </Button>
         </form>
 
         <p className='text-gray-500 pt-4 text-sm text-center '>

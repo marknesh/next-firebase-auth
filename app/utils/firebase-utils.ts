@@ -10,13 +10,12 @@ const actionCodeSettings: ActionCodeSettings = {
   // URL must be in the authorized domains list in the Firebase Console.
   //Please remember to replace the URL with the appropriate value for production.
   url: (process.env.NODE_ENV !== 'production'
-    ? 'http://localhost:3000/emailLinkLogin'
+    ? process.env.NEXT_PUBLIC_EMAIL_LINK_DEVELOPMENT_URL
     : process.env.NEXT_PUBLIC_EMAIL_LINK_PRODUCTION_URL) as string,
   handleCodeInApp: true,
 };
 
 export async function sendEmailLink(email: string) {
-  console.log(email);
   return new Promise((resolve, reject) => {
     sendSignInLinkToEmail(auth, email, actionCodeSettings)
       .then(() => {

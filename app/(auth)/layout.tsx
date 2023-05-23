@@ -1,7 +1,11 @@
 import '../globals.css';
 import { Poppins } from 'next/font/google';
 
-const poppins = Poppins({ subsets: ['latin'], weight: '400' });
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-poppins',
+});
 
 export const metadata = {
   title: 'Create Next App',
@@ -17,7 +21,7 @@ export default function RootLayout({
     <html lang='en'>
       <body
         suppressHydrationWarning={true}
-        className={`${poppins.className} bg-gray-100 min-h-screen  mt-10`}
+        className={`${poppins.variable} font-poppins bg-gray-100 min-h-screen  mt-10`}
       >
         <main className='flex flex-col justify-center items-center min-h-[80vh]'>
           {children}
