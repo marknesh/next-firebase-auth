@@ -12,14 +12,14 @@ const Button = (props: ButtonProps) => {
   return (
     <button
       disabled={loading}
-      className={`${className} h-10 flex justify-center items-center ${
+      className={`${className} button mx-auto h-10 flex justify-center items-center ${
         loading && 'bg-gray-200 hover:bg-gray-200 disabled:cursor-not-allowed'
       } `}
     >
       {!loading ? (
         children
       ) : (
-        <BeatLoader color={'light-gray'} size={9} loading={loading} />
+        <BeatLoader color={'gray'} size={9} loading={loading} />
       )}
     </button>
   );

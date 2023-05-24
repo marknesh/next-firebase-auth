@@ -1,5 +1,6 @@
 import '../globals.css';
 import { Poppins } from 'next/font/google';
+import 'react-toastify/dist/ReactToastify.css';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -23,7 +24,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={`${poppins.variable} font-poppins bg-gray-100 min-h-screen  mt-10`}
       >
-        <main className='flex flex-col justify-center items-center min-h-[80vh]'>
+        <main className='flex  flex-col justify-center items-center min-h-[80vh] w-11/12 md:w-full mx-auto'>
           {children}
         </main>
       </body>

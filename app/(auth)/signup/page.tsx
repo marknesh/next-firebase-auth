@@ -7,6 +7,8 @@ import { AuthError } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import Button from '@/components/Button';
 import { useState } from 'react';
+import { showErrorMessage } from '@/app/utils/showErrorMessage';
+import { ToastContainer } from 'react-toastify';
 
 const Signup = () => {
   const {
@@ -28,8 +30,8 @@ const Signup = () => {
         router.push(`/checkEmail?email=${data.email}`);
       })
       .catch((error: AuthError) => {
-        console.log(error);
         setLoading(false);
+        showErrorMessage(error);
       });
   };
 
@@ -47,8 +49,8 @@ const Signup = () => {
           />
           {errors.email && <span className='formError'>Email is required</span>}
 
-          <Button loading={loading} className='formSubmitButton'>
-            Send Email Link
+          <Button loading={loading}>
+            Send Magic Link
           </Button>
         </form>
 
@@ -62,6 +64,7 @@ const Signup = () => {
           </Link>
         </p>
       </div>
+      <ToastContainer />
     </div>
   );
 };
