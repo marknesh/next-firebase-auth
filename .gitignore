@@ -38,3 +38,4 @@ next-env.d.ts
 # firebase
 .firebaserc
 firebase.json
+service-account.json

@@ -1,9 +1,17 @@
 'use client';
 import { showErrorMessage } from '@/app/utils/showErrorMessage';
+import Button from '@/components/Button';
 import { auth } from '@/firebase';
-import { isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
+import axios from 'axios';
+import {
+  AuthError,
+  UserCredential,
+  isSignInWithEmailLink,
+  signInWithEmailLink,
+} from 'firebase/auth';
+import Link from 'next/link';
 import { redirect, useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 
 const EmailLinkLogin = ({
@@ -11,8 +19,6 @@ const EmailLinkLogin = ({
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
-  const router = useRouter();
-
   const urlHasAllProperties = () => {
     const requiredProperties = ['mode', 'apiKey', 'lang', 'oobCode'];
     return (
@@ -24,8 +30,13 @@ const EmailLinkLogin = ({
   };
 
   if (Object.keys(searchParams as {}).length === 0 || !urlHasAllProperties()) {
-    return redirect('/signin');
+    redirect('/signin');
   }
+
+  const [createSessionCookieError, setCreateSessionCookieError] =
+    useState<AuthError | null>(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     const verifyEmailLink = () => {
@@ -42,37 +53,61 @@ const EmailLinkLogin = ({
         }
         // The client SDK will parse the code from the link for you.
         signInWithEmailLink(auth, email!, window.location.href)
-          .then(() => {
-            // Clear email from storage.
-            window.localStorage.removeItem('emailForSignIn');
-            router.replace('/');
-            // You can access the new user via result.user
-            // Additional user info profile not available via:
-            // result.additionalUserInfo.profile == null
-            // You can check if the user is new or existing:
-            // result.additionalUserInfo.isNewUser
+          .then(async (result: UserCredential) => {
+            const idToken = await result.user.getIdToken();
+
+            await axios
+              .get('/api/createSessionCookie', {
+                params: { idToken },
+              })
+              .then(() => {
+                // Clear email from storage.
+                window.localStorage.removeItem('emailForSignIn');
+                router.replace('/');
+                // You can access the new user via result.user
+                // Additional user info profile not available via:
+                // result.additionalUserInfo.profile == null
+                // You can check if the user is new or existing:
+                // result.additionalUserInfo.isNewUser
+              })
+              .catch((error) => {
+                setCreateSessionCookieError(error?.response?.data);
+              });
           })
           .catch((error) => {
-            if(error){
-              return router.push("/invalidLink")
+            if (error) {
+              return router.push('/invalidLink');
             }
-            // showErrorMessage(error);
-            // router.push('/');
           });
       } else {
         return router.replace('/');
       }
     };
     verifyEmailLink();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (createSessionCookieError) {
+    showErrorMessage(createSessionCookieError);
+    return (
+      <div className='-mt-10 flex flex-col  max-w-xl space-y-2'>
+        <h1 className='text-xl text-center '>
+          Oops! An error has occurred. Please try again later.
+        </h1>
+        <Link href='/signin'>
+          <Button className='w-2/6'>Sign in</Button>
+        </Link>
+        <ToastContainer />
+      </div>
+    );
+  }
 
   return (
     <div className='-mt-4'>
       <div className='w-10 h-10 animate-bounce mb-3 bg-gray-900 border-2 border-stone-200 shadow-2xl rounded-full mx-auto' />
       <p className='text-gray-900'>
-        Sit tight! We're securely signing you in...
+        Sit tight! We&apos;re securely signing you in...
       </p>
-      <ToastContainer />
     </div>
   );
 };
