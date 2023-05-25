@@ -108,7 +108,7 @@ const MagicLinkLogin = () => {
   return (
     <div className='-mt-4'>
       <div className='w-10 h-10 animate-bounce mb-3 bg-gray-900 border-2 border-stone-200 shadow-2xl rounded-full mx-auto' />
-      <p className='text-gray-900'>
+      <p className='text-gray-900 text-center'>
         Sit tight! We&apos;re securely signing you in...
       </p>
     </div>

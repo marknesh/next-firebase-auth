@@ -1,7 +1,7 @@
 import { initializeApp, cert, getApps, getApp, App } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 
-if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+if (process.env.NODE_ENV !== 'production') {
   process.env.FIREBASE_AUTH_EMULATOR_HOST = 'localhost:9099';
 }
 
@@ -15,8 +15,7 @@ const app: App =
     ? getApp()
     : initializeApp({
         projectId:
-          typeof window !== 'undefined' &&
-          window.location.hostname === 'localhost'
+          process.env.NODE_ENV !== 'production'
             ? emulatorProjectId
             : process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,
         credential: cert({
