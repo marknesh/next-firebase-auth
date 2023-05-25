@@ -13,7 +13,8 @@ const app: App =
     ? getApp()
     : initializeApp({
         projectId:
-          process.env.NODE_ENV !== 'production'
+          typeof window !== 'undefined' &&
+          window.location.hostname === 'localhost'
             ? emulatorProjectId
             : process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,
         credential: cert({
