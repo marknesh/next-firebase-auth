@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
-if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+if (process.env.NODE_ENV !== 'production') {
   connectAuthEmulator(auth, 'http://localhost:9099');
 }
 
