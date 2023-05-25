@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 
-const CheckEmail = ({
-  searchParams,
+const CheckEmail = async ({
+  searchParams
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {

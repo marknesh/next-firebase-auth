@@ -10,21 +10,24 @@ import {
   signInWithEmailLink,
 } from 'firebase/auth';
 import Link from 'next/link';
-import { redirect, useRouter } from 'next/navigation';
+import {
+  ReadonlyURLSearchParams,
+  redirect,
+  useRouter,
+  useSearchParams,
+} from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 
-const EmailLinkLogin = ({
-  searchParams,
-}: {
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
+const MagicLinkLogin = () => {
+  const searchParams: ReadonlyURLSearchParams = useSearchParams();
+
   const urlHasAllProperties = () => {
     const requiredProperties = ['mode', 'apiKey', 'lang', 'oobCode'];
     return (
       searchParams &&
       requiredProperties.every(
-        (prop) => searchParams.hasOwnProperty(prop) && searchParams[prop]
+        (prop) => searchParams.has(prop) && searchParams.get(prop)
       )
     );
   };
@@ -112,4 +115,4 @@ const EmailLinkLogin = ({
   );
 };
 
-export default EmailLinkLogin;
+export default MagicLinkLogin;

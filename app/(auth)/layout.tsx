@@ -1,4 +1,3 @@
-import axios from 'axios';
 import '../globals.css';
 import { Poppins } from 'next/font/google';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,8 +18,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const res = await axios.get('https://reddit.com/.json');
-
   return (
     <html lang='en'>
       <body
