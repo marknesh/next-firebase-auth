@@ -2,12 +2,12 @@
 import { SigninForm } from '@/types/formData';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
-import { sendEmailLink } from '@/app/utils/firebase-utils';
+import { sendEmailLink } from '@/utils/firebase-utils';
 import { AuthError } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import Button from '@/components/Button';
 import { useState } from 'react';
-import { showErrorMessage } from '@/app/utils/showErrorMessage';
+import { showErrorMessage } from '@/utils/showErrorMessage';
 import { ToastContainer } from 'react-toastify';
 
 const Login = () => {

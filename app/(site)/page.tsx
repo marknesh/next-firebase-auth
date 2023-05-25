@@ -1,4 +1,4 @@
-import { checkIfLoggedIn } from '../utils/checkIfLoggedIn';
+import { checkIfLoggedIn } from '@/utils/checkIfLoggedIn';
 
 export default async function Home() {
   const user = await checkIfLoggedIn();

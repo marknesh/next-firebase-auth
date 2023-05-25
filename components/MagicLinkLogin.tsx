@@ -1,5 +1,5 @@
 'use client';
-import { showErrorMessage } from '@/app/utils/showErrorMessage';
+import { showErrorMessage } from '@/utils/showErrorMessage';
 import Button from '@/components/Button';
 import { auth } from '@/firebase';
 import axios from 'axios';
