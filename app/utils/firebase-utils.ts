@@ -17,6 +17,7 @@ const actionCodeSettings: ActionCodeSettings = {
 
 export async function sendEmailLink(email: string) {
   console.log(process.env.NEXT_PUBLIC_EMAIL_LINK_DEVELOPMENT_URL, 'url');
+  console.log(process.env.NODE_ENV !== 'production' ? 'dev' : 'prod');
   return new Promise((resolve, reject) => {
     sendSignInLinkToEmail(auth, email, actionCodeSettings)
       .then(() => {
