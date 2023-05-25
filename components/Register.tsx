@@ -26,7 +26,6 @@ const Register = () => {
     return sendEmailLink(data.email)
       .then(() => {
         window.localStorage.setItem('emailForSignIn', data.email);
-        setLoading(false);
         router.push(`/checkEmail?email=${data.email}`);
       })
       .catch((error: AuthError) => {
