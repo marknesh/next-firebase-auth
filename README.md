@@ -34,22 +34,26 @@ yarn install
 cp .env.example .env.local
 ```
 
-4. Initialize firebase emulator. `Please only allow the Authentication Emulator`.
+4. [Create](https://firebase.google.com/) a firebase project.
+<br/>
+
+5. Initialize firebase emulator. `Choose the Authentication Emulator and select port 9099`.
+
 ```sh
 firebase init emulators
 ```
 
-5. Start firebase emulator.
+6. Start firebase emulator.
 ```sh
 firebase emulators:start
 ```
+__⚠ Because we are using the Auth Emulator in Firebase, you won't receive a sign-in email link in your email. Instead, please check the emulator logs after submitting your email for signing in or signing up to obtain the link. All sign-in and sign-up operations will be completed through the web.__
 
-6. Start the local development server.
+
+7. Start the local development server.
 ```sh
 yarn run dev
 ```
-
-
 
 
 
