@@ -7,11 +7,11 @@ export default async function Home() {
   return (
     <div className='flex flex-col space-y-10 justify-center items-center min-h-[80vh]'>
       <div className='flex flex-col space-y-3 md:space-y-2 justify-center items-center '>
-        <h2 className='text-3xl font-semibold text-center text-gray-900'>
+        <h2 className='text-4xl font-semibold text-center text-gray-900'>
           Next.js 13 Firebase Auth Starter Template{' '}
         </h2>
         <p className='text-gray-500 text-center'>
-          This is a Next.js starter kit that use Firebase Email Link for simple
+          This is a Next.js starter kit that uses Firebase Email Link for simple
           and secure passwordless login.
         </p>
       </div>

@@ -1,34 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next Firebase Auth
+A Next.js starter kit that uses Firebase Email Link for simple and secure passwordless login.
 
-## Getting Started
+# Features
+* File based routing using `/app` dir.
+* Styled using **tailwindcss**.
+* Firebase Email Link authentication.
+* Server-side rendered user authentication.
+* Firebase local emulator.
+* Code is written in **TypeScript**.
+* Api routes.
+* Server and client components.
 
-First, run the development server:
+## Important Notice: Unstable Releases
+> **Warning**
+> Using `redirect` when rendering something on the server with the  try-catch method or .then/.catch may result in a `NEXT_REDIRECT` error. I will make sure to incorporate the necessary changes and update the warning message once the issue with `NEXT_REDIRECT` is resolved. See [issue](https://github.com/vercel/next.js/issues/49964).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## Coming soon
+- [ ] Signup/Signin with other login providers.
+
+## Running locally
+1. Git clone
+```sh
+git clone https://github.com/marknesh/next-firebase-auth
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies.
+```sh
+yarn install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Copy `.env.example` to `.env.local` and update the environment variables.
+```sh
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. Initialize firebase emulator. `Please only allow the Authentication Emulator`.
+```sh
+firebase init emulators
+```
 
-## Learn More
+5. Start firebase emulator.
+```sh
+firebase emulators:start
+```
 
-To learn more about Next.js, take a look at the following resources:
+6. Start the local development server.
+```sh
+yarn run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
