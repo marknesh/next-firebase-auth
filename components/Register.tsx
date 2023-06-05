@@ -35,27 +35,27 @@ const Register = () => {
   };
 
   return (
-    <div className='bg-white w-11/12   md:w-full max-w-md flex flex-col space-y-7  py-7 rounded-xl'>
-      <h1 className='text-2xl text-center font-semibold'>Create an account</h1>
+    <div className="bg-white w-11/12   md:w-full max-w-md flex flex-col space-y-7  py-7 rounded-xl">
+      <h1 className="text-2xl text-center font-semibold">Create an account</h1>
 
-      <div className='w-11/12 mx-auto'>
-        <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
+      <div className="w-11/12 mx-auto">
+        <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
           <input
-            type='email'
-            className='emailInput'
+            type="email"
+            className="emailInput"
             {...register('email', { required: true })}
-            placeholder='Email address'
+            placeholder="Email address"
           />
-          {errors.email && <span className='formError'>Email is required</span>}
+          {errors.email && <span className="formError">Email is required</span>}
 
           <Button loading={loading}>Send Magic Link</Button>
         </form>
 
-        <p className='text-gray-500 pt-4 text-sm text-center '>
+        <p className="text-gray-500 pt-4 text-sm text-center ">
           Already have an account?{' '}
           <Link
-            href='/signin'
-            className='text-gray-800 cursor-pointer font-semibold'
+            href="/signin"
+            className="text-gray-800 cursor-pointer font-semibold"
           >
             Sign in
           </Link>

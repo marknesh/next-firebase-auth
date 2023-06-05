@@ -2,13 +2,19 @@
   "name": "next-firebase-auth",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=14.0.0",
+    "yarn": ">=1.22.0",
+    "npm": "please-use-yarn"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "cypress:open": "cypress open",
-    "test":"start-server-and-test dev 3000 cypress:open"
+    "test": "start-server-and-test dev 3000 cypress:open",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@types/node": "20.2.1",
@@ -35,6 +41,7 @@
   "devDependencies": {
     "@types/cookie": "^0.5.1",
     "cypress": "^12.13.0",
+    "prettier": "^2.8.8",
     "start": "^5.1.0",
     "start-server-and-test": "^2.0.0"
   }
