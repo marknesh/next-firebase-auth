@@ -25,7 +25,6 @@ export async function GET(request: Request) {
         secure: true,
         maxAge: expiresInSeconds,
         path: '/',
-        sameSite: 'strict',
       };
 
       return NextResponse.json(
