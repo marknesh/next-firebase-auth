@@ -40,6 +40,8 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.5",
+    "@commitlint/config-conventional": "^17.6.5",
     "@types/cookie": "^0.5.1",
     "cypress": "^12.13.0",
     "husky": "^8.0.3",
