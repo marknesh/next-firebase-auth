@@ -41,6 +41,7 @@ const Login = () => {
       <div className='w-11/12 mx-auto'>
         <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
           <input
+            data-testid='email'
             type='email'
             className='emailInput'
             {...register('email', { required: true })}
@@ -48,7 +49,7 @@ const Login = () => {
           />
           {errors.email && <span className='formError'>Email is required</span>}
 
-          <Button loading={loading}>Send Magic Link</Button>
+          <Button data-testid='sendMagicLink' loading={loading}>Send Magic Link</Button>
         </form>
 
         <p className='text-gray-500 pt-4 text-sm text-center '>
