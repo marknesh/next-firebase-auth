@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress:open": "cypress open",
+    "test":"start-server-and-test dev 3000 cypress:open"
   },
   "dependencies": {
     "@types/node": "20.2.1",
@@ -31,6 +33,9 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@types/cookie": "^0.5.1"
+    "@types/cookie": "^0.5.1",
+    "cypress": "^12.13.0",
+    "start": "^5.1.0",
+    "start-server-and-test": "^2.0.0"
   }
 }
