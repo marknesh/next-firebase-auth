@@ -13,7 +13,7 @@ A Next.js starter kit that uses Firebase Email Link for simple and secure passwo
 
 ## Important Notice: Unstable Releases
 > **Warning**
-> Using `redirect` when rendering something on the server with the  try-catch method or .then/.catch may result in a `NEXT_REDIRECT` error. I will make sure to incorporate the necessary changes and update the warning message once the issue with `NEXT_REDIRECT` is resolved. See [issue](https://github.com/vercel/next.js/issues/49964).
+> Using `redirect` with the  `try-catch` method or `.then/.catch`  results in a `NEXT_REDIRECT` error which is expected, but it does not redirect. See [issue](https://github.com/vercel/next.js/issues/49964).
 
 ## Coming soon
 - [ ] Signup/Signin with other login providers.
