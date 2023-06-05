@@ -20,12 +20,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body
         suppressHydrationWarning={true}
         className={`${poppins.variable} font-poppins `}
       >
-        <main className='w-11/12 md:w-full mx-auto '>{children}</main>
+        <main className="w-11/12 md:w-full mx-auto ">{children}</main>
       </body>
     </html>
   );
